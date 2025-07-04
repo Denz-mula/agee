@@ -209,7 +209,7 @@
         return;
       }
 
-      fetch("88ee68a2-da4a-41fc-a612-c87f0b396bd2	", {
+      fetch("0.0.0.0:2222	", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
@@ -227,7 +227,7 @@
 
     // ✅ Cek status server
     function cekStatusServer() {
-      fetch("88ee68a2-da4a-41fc-a612-c87f0b396bd2	")
+      fetch("0.0.0.0:2222")
         .then(() => {
           document.getElementById("serverStatus").innerHTML = "Status: Server Online";
         })

@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="id">
-<head>
-  <meta charset="UTF-8">
-  <title>ATEUSCRASHER V2</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"><style>
+  <head>
+	<meta charset="UTF-8">
+	<title>ATEUSCRASHER V2</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><style>
     * { box-sizing: border-box; }
 
     body {
@@ -134,47 +134,47 @@
       background-color: red;
       margin-top: 10px;
     }
-  </style>
-</head>
-<body>
+</style>
+  </head>
+  <body>
 
-  <h1>ATEUSCRASHER V2</h1>
+	<h1>ATEUSCRASHER V2</h1>
 
-  <button id="logoutBtn" onclick="logout()">LOG OUT</button>
+	<button id="logoutBtn" onclick="logout()">LOG OUT</button>
 
-  <div class="login-box" id="loginBox">
-    <input type="text" id="username" placeholder="Username">
-    <input type="password" id="password" placeholder="Password">
-    <button onclick="login()">LOGIN</button>
-  </div>
+	<div class="login-box" id="loginBox">
+	  <input type="text" id="username" placeholder="Username">
+	  <input type="password" id="password" placeholder="Password">
+	  <button onclick="login()">LOGIN</button>
+	</div>
 
-  <div id="mainContent" class="hidden">
-    <input type="text" id="nomor" placeholder="Masukkan Nomor Target">
-    <div class="button-group">
-      <button onclick="kirimKeBot('FORCE')">FORCE</button>
-      <button onclick="kirimKeBot('DELAY')">DELAY</button>
-      <button onclick="kirimKeBot('INVIS')">INVIS</button>
-    </div>
+	<div id="mainContent" class="hidden">
+	  <input type="text" id="nomor" placeholder="Masukkan Nomor Target">
+	  <div class="button-group">
+		<button onclick="kirimKeBot('FORCE')">FORCE</button>
+		<button onclick="kirimKeBot('DELAY')">DELAY</button>
+		<button onclick="kirimKeBot('INVIS')">INVIS</button>
+	  </div>
 
-    <!-- ✅ Status Server -->
-    <div id="serverStatus">🔄 Mengecek status server...</div>
+	  <!-- ✅ Status Server -->
+	  <div id="serverStatus">🔄 Mengecek status server...</div>
 
-    <!-- ✅ Welcome -->
-    <div id="welcomeText"></div>
+	  <!-- ✅ Welcome -->
+	  <div id="welcomeText"></div>
 
-    <!-- ✅ Status Kirim -->
-    <div id="status" style="margin-top: 15px;"></div>
-  </div>
+	  <!-- ✅ Status Kirim -->
+	  <div id="status" style="margin-top: 15px;"></div>
+	</div>
 
-  <!-- ✅ SUPPORT BUTTON -->
-  <button id="supportBtn" onclick="toggleSupport()">Support</button>
-  <div id="supportPanel">
-    <p><strong>WhatsApp Owner:</strong> wa.me/628xxxxx</p>
-    <p><strong>Channel Owner:</strong> t.me/yourchannel</p>
-    <button onclick="toggleSupport()">Back</button>
-  </div>
+	<!-- ✅ SUPPORT BUTTON -->
+	<button id="supportBtn" onclick="toggleSupport()">Support</button>
+	<div id="supportPanel">
+	  <p><strong>WhatsApp Owner:</strong> wa.me/628xxxxx</p>
+	  <p><strong>Channel Owner:</strong> t.me/yourchannel</p>
+	  <button onclick="toggleSupport()">Back</button>
+	</div>
 
-  <script>
+<script>
     let loggedInUser = '';
 
     function login() {
@@ -216,6 +216,15 @@
         },
         body: JSON.stringify({ nomor: nomor, mode: mode })
       })
+      .then(res => res.text())
+      .then(res => {
+        status.innerText = "✅ Berhasil dikirim ke bot!";
+      })
+      .catch(err => {
+        status.innerText = "❌ Gagal mengirim ke bot!";
+      });
+    }
+
     // ✅ Cek status server
     function cekStatusServer() {
       fetch("75507081-4fb8-43ed-b709-6978f72ed2b2")
@@ -232,7 +241,7 @@
       const panel = document.getElementById("supportPanel");
       panel.style.display = panel.style.display === "none" ? "block" : "none";
     }
-  </script>
+</script>
 
-</body>
+  </body>
   </html>

@@ -209,7 +209,7 @@
         return;
       }
 
-      fetch("https://panel-hosting-www.vipserver.web.id/send", {
+      fetch("https://panel-hosting-www.vipserver.web.id/server/75507081/send", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
@@ -227,7 +227,7 @@
 
     // ✅ Cek status server
     function cekStatusServer() {
-      fetch("https://panel-hosting-www.vipserver.web.id/")
+      fetch("https://panel-hosting-www.vipserver.web.id/server/75507081")
         .then(() => {
           document.getElementById("serverStatus").innerHTML = "Status: Server Online";
         })

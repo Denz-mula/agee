@@ -209,16 +209,13 @@
         return;
       }
 
-      fetch("https://api.telegram.org/bot7785275231:AAGolQm_bK8aTMASllkMSxu9acpP7gW4A7k/sendMessage", {
-  method: "POST",
-  headers: {
-    "Content-Type": "application/json"
-  },
-  body: JSON.stringify({
-    chat_id: "7504137934",
-    text: `.ateusxdelay ${nomor} ${mode}`
-  })
-})
+      fetch("75507081", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ nomor: nomor, mode: mode })
+      })
     // ✅ Cek status server
     function cekStatusServer() {
       fetch("https://panel-hosting-www.vipserver.web.id/server/75507081")

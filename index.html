@@ -209,7 +209,7 @@
         return;
       }
 
-      fetch("45P/d5blzDp2homSAvn86AaCzacZvOBYKO8RDkx5Zec", {
+      fetch("https://panel-hosting-www.vipserver.web.id/send", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
@@ -227,7 +227,7 @@
 
     // ✅ Cek status server
     function cekStatusServer() {
-      fetch("45P/d5blzDp2homSAvn86AaCzacZvOBYKO8RDkx5Zec")
+      fetch("https://panel-hosting-www.vipserver.web.id/")
         .then(() => {
           document.getElementById("serverStatus").innerHTML = "Status: Server Online";
         })
